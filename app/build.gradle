@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.chaquo.python'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
@@ -13,6 +13,24 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+        python {
+            buildPython "D:/Python/python.exe"
+//            version "3.6.5"
+            staticProxy "nidus.main"}
+        python {
+            pip{
+                install "numpy"
+                install "tensorflow"
+            }
+        }
+        python {
+            pyc {
+                stdlib true
+            }
+        }
         externalNativeBuild {
             cmake {
                 cppFlags ""
